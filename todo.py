@@ -8,8 +8,8 @@ def todo():
 
     texto = input(click.style(' What is yout to-do? » ', fg='green', bold=True))
 
-    cron = CronTab(user='mic')
-    job = cron.new(command='export DISPLAY=:0.0 && XDG_RUNTIME_DIR=/run/user/$(id -u) /usr/bin/notify-send "' + texto + '"')
+    cron = CronTab('mic')
+    job = cron.new(command='/usr/bin/dunstify "' + texto + '"')
     job.minute.every(59)
     cron.write()
 
